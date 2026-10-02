@@ -1,0 +1,379 @@
+/* Classic Open Book Login Design - Vintage Library Theme */
+
+:root {
+    --leather-brown: #8B4513;
+    --leather-dark: #654321;
+    --parchment: #F5F5DC;
+    --gold: #D4AF37;
+    --burgundy: #800020;
+    --warm-cream: #FFF8DC;
+    --text-dark: #2F1B14;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, #8B4513 0%, #654321 50%, #4A2C17 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1500px;
+    overflow: hidden;
+}
+
+/* Book Container */
+.book-container {
+    width: 900px;
+    height: 600px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+}
+
+.book-container:hover {
+    transform: rotateY(-5deg);
+}
+
+/* Book Cover */
+.book-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, #8B4513 0%, #654321 50%, #4A2C17 100%);
+    border-radius: 10px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.book-cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.1) 2px,
+            rgba(0, 0, 0, 0.1) 4px
+        );
+    border-radius: 10px;
+}
+
+.book-spine {
+    position: absolute;
+    left: -20px;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    background: linear-gradient(90deg, #654321 0%, #8B4513 50%, #654321 100%);
+    border-radius: 20px 0 0 20px;
+    transform: rotateY(-90deg) translateX(-20px);
+    transform-origin: left;
+}
+
+/* Book Pages */
+.book-pages {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1.5s ease;
+}
+
+.page {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: var(--parchment);
+    border: 1px solid rgba(139, 69, 19, 0.3);
+    box-shadow: 
+        0 0 20px rgba(0, 0, 0, 0.1),
+        inset 0 0 10px rgba(139, 69, 19, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    backface-visibility: hidden;
+}
+
+/* Left Page - Login Form */
+.left-page {
+    left: 0;
+    border-radius: 0 0 0 10px;
+    background: 
+        linear-gradient(to right, rgba(245, 245, 220, 0.9), rgba(245, 245, 220, 0.95)),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 20px,
+            rgba(139, 69, 19, 0.1) 20px,
+            rgba(139, 69, 19, 0.1) 21px
+        );
+}
+
+.left-page::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* Right Page - Welcome/Registration */
+.right-page {
+    right: 0;
+    border-radius: 0 0 10px 0;
+    background: 
+        linear-gradient(to left, rgba(245, 245, 220, 0.9), rgba(245, 245, 220, 0.95)),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 20px,
+            rgba(139, 69, 19, 0.1) 20px,
+            rgba(139, 69, 19, 0.1) 21px
+        );
+    transform-origin: left;
+    transition: transform 1.5s ease;
+}
+
+.right-page.flipped {
+    transform: rotateY(-180deg);
+}
+
+/* Page Content Styling */
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.page-subtitle {
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 40px;
+    opacity: 0.8;
+}
+
+/* Form Styling */
+.vintage-form {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    background: rgba(245, 245, 220, 0.8);
+    border: 1px solid rgba(139, 69, 19, 0.3);
+    border-radius: 5px;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+    background: rgba(255, 248, 220, 0.9);
+}
+
+.form-group input::placeholder {
+    color: rgba(47, 27, 20, 0.6);
+    font-style: italic;
+}
+
+/* Vintage Button */
+.vintage-btn {
+    width: 100%;
+    padding: 15px;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--warm-cream);
+    background: linear-gradient(135deg, var(--leather-brown) 0%, var(--leather-dark) 100%);
+    border: 1px solid var(--leather-dark);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.vintage-btn:hover {
+    background: linear-gradient(135deg, var(--leather-dark) 0%, var(--burgundy) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.vintage-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Page Flip Controls */
+.page-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.page-btn {
+    padding: 10px 20px;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: rgba(212, 175, 55, 0.2);
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-btn:hover {
+    background: rgba(212, 175, 55, 0.4);
+    transform: scale(1.05);
+}
+
+/* Welcome Page Content */
+.welcome-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.library-icon {
+    font-size: 48px;
+    color: var(--leather-brown);
+    margin-bottom: 20px;
+}
+
+.features-list {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.features-list li {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.features-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .book-container {
+        width: 95%;
+        height: 500px;
+    }
+    
+    .page {
+        padding: 20px;
+    }
+    
+    .page-title {
+        font-size: 24px;
+    }
+    
+    .vintage-form {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-container {
+        width: 100%;
+        height: 450px;
+    }
+    
+    .page {
+        padding: 15px;
+    }
+    
+    .page-title {
+        font-size: 20px;
+    }
+    
+    .vintage-form {
+        max-width: 200px;
+    }
+    
+    .form-group input {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .vintage-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+/* Hide original elements */
+.banner,
+.form {
+    display: none;
+}
+
+/* Show new book design */
+body {
+    background: linear-gradient(135deg, #8B4513 0%, #654321 50%, #4A2C17 100%);
+}
+
+/* Footer adjustments */
+.footer {
+    display: none;
+}

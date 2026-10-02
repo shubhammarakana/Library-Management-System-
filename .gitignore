@@ -1,0 +1,9 @@
+# OS / Editor Files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Local configuration overrides (if any)
+# auth_helper.php

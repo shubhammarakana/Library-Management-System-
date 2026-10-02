@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Book-Shaped Login/Register Form</title>
+<style>
+  /* Reset & body */
+  body, html {
+    height: 100%;
+    margin: 0;
+    background: #f2e9dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Georgia', serif;
+  }
+
+  /* Container with perspective */
+  .book-container {
+    perspective: 1200px;
+  }
+
+  /* The book page */
+  input[type=checkbox] {
+    display: none;
+  }
+
+  .page {
+    width: 360px;
+    height: 460px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    border-radius: 8px;
+  }
+
+  /* Flip the page when checkbox is checked */
+  input[type=checkbox]:checked ~ .page {
+    transform: rotateY(-180deg);
+  }
+
+  /* Front and back side of the page */
+  .front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 40px 30px;
+    box-sizing: border-box;
+    background: #fff8e1;
+    border: 1px solid #c8b89a;
+    border-radius: 8px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .front {
+    transform: rotateY(0deg);
+  }
+
+  .back {
+    transform: rotateY(180deg);
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #6f5e2c;
+  }
+
+  input[type=text], input[type=password], input[type=email] {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #d1c7a0;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+  }
+
+  button {
+    background: #a88e4f;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  button:hover {
+    background: #7c6b32;
+  }
+
+  /* The toggle link */
+  label.toggle-link {
+    margin-top: 20px;
+    text-align: center;
+    color: #8a7a43;
+    cursor: pointer;
+    font-style: italic;
+    user-select: none;
+    display: block;
+  }
+
+  label.toggle-link:hover {
+    text-decoration: underline;
+  }
+
+</style>
+</head>
+<body>
+</form>
+<div class="book-container">
+
+  <!-- Hidden checkbox to control flip -->
+  <input type="checkbox" id="flip-toggle" />
+
+  <!-- The page -->
+  <div class="page">
+    <!-- Front side - Login -->
+    <div class="front">
+      <h2>Login</h2>
+        <input type="text" placeholder="User Name" name="student_username" required>
+       <input type="email" placeholder="Email" name="Email" required>
+        <input type="password" placeholder="Password" name="Password" id="Pass" required>
+        <span class='show-hide'><i class="fas fa-eye" id="eye"></i></span>
+        <button type="submit" class="btn" name="login" style="margin-top:-10px;">Login</button>
+        <a href="student_forgot_password.php">Forgot Password?</a>
+        <div class="signup">
+                        <p>New to this website?</p><span onclick="reg()">SignUp</span>
+                    </div>
+      <label for="flip-toggle" class="toggle-link">New here? Sign Up</label>
+    </div>
+
+    <!-- Back side - Register -->
+    <div class="back">
+      <h2>Register</h2>
+         <input type="text" placeholder="User Name" name="student_username" required>
+                    <input type="text" placeholder="Full Name" name="FullName" required>
+                    <input type="email" placeholder="Email" name="Email" required>
+                    <input type="password" placeholder="Password" name="Password" id="Pass-reg" style="margin-bottom: 0;" required>
+                    <span class='show-hide-reg'><i class="fas fa-eye" id="eye-reg"></i></span>
+                    <input type="text" name="PhoneNumber" placeholder="Phone Number" style="margin-top:-15px;" required>
+                    <div class="label">
+                        <label for="pic">Upload Picture :</label>
+                    </div>
+                    <input type="file"  name="file" class="file" value="">
+      <button>Sign Up</button>
+      <label for="flip-toggle" class="toggle-link">Already have account? Login</label>
+    </div>
+  </div>
+
+</div>
+</form>
+</body>
+</html>

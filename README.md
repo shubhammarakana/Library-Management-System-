@@ -70,7 +70,7 @@ Ensure you have **XAMPP** (or LAMP/WAMP) installed with Apache and MySQL enabled
 
 ### 2. Clone the Repository
 ```bash
-git clone https://github.com/shubhammarakana/SMLS.git
+git clone https://github.com/shubhammarakana/Library-Management-System-.git
 ```
 *Or place the project directory into your web server root (`c:/xampp/htdocs/`)*.
 
